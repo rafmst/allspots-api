@@ -7,7 +7,7 @@ class SpotsController {
    * @param ctx Context
    * @param next Next
    */
-  public async index(ctx: Context, next: Next): Promise<void> {
+  public async list(ctx: Context, next: Next): Promise<void> {
     const spots = await Spot.find()
 
     ctx.body = { content: spots }

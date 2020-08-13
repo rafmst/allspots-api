@@ -17,9 +17,9 @@ router.get('/', MainController.documentation)
 router.post('/users/register', AuthController.register)
 router.post('/users/authenticate', AuthController.authenticate)
 
-//router.get('/filters/list', ensureToken, verifyToken, FiltersController.index)
-router.get('/filters/list', FiltersController.index)
-router.get('/spots/list', SpotsController.index)
+//router.get('/filters', ensureToken, verifyToken, FiltersController.index)
+router.get('/filters', FiltersController.list)
+router.get('/spots', SpotsController.list)
 router.post('/spots/add', SpotsController.add)
 
 export default router

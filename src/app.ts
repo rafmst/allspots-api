@@ -2,6 +2,7 @@ import Koa from 'koa'
 import logger from 'koa-logger'
 import bodyparser from 'koa-bodyparser'
 import json from 'koa-json'
+import cors from '@koa/cors'
 import mongoose from 'mongoose'
 import 'dotenv/config'
 
@@ -22,6 +23,7 @@ class App {
    * Load middlewares
    */
   private middlewares(): void {
+    this.app.use(cors())
     this.app.use(json())
     this.app.use(logger())
     this.app.use(bodyparser())
@@ -33,7 +35,7 @@ class App {
   private database(): void {
     mongoose.connect(process.env.DATABASE!, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     })
   }
 

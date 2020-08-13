@@ -10,7 +10,7 @@ class FiltersController {
    * @param ctx Context
    * @param next Next
    */
-  public async index(ctx: Context, next: Next): Promise<void> {
+  public async list(ctx: Context, next: Next): Promise<void> {
     let accesses, categories, sizes, skills
     await Promise.allSettled([
       Access.find()
