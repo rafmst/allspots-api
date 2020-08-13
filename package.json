@@ -1,0 +1,49 @@
+{
+  "name": "allspots",
+  "version": "0.0.1",
+  "description": "API to feed AllSpots (a parkour spots catalog). Built with Typescript + MongoDB",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "prod": "tsc && node .",
+    "deploy": "git push heroku master"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "typescript"
+  ],
+  "author": "Rafael Morais <rafaelcanical@gmail.com>",
+  "license": "MIT",
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120,
+    "tabWidth": 2,
+    "semi": false,
+    "parser": "typescript",
+    "spaceAfterFunction": true
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^9.1.0",
+    "mongoose": "^5.9.28"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/koa": "^2.11.3",
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-json": "^2.0.18",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.1",
+    "@types/mongoose": "^5.7.36",
+    "@types/node": "^14.0.27",
+    "bcrypt": "^5.0.0",
+    "typescript": "^3.9.7"
+  }
+}
