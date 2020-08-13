@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "prod": "tsc && node .",
-    "deploy": "git push heroku master"
+    "tsc": "tsc",
+    "deploy": "git push heroku master",
+    "postinstall": "npm run tsc"
   },
   "keywords": [
     "rest",
@@ -33,7 +35,9 @@
     "koa-router": "^9.1.0",
     "mongoose": "^5.9.28",
     "bcrypt": "^5.0.0",
-    "typescript": "^3.9.7",
+    "typescript": "^3.9.7"
+  },
+  "devDependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/koa": "^2.11.3",
