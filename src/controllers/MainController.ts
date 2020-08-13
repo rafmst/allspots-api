@@ -1,4 +1,4 @@
-import { Context, Next } from 'Koa'
+import { Context, Next } from 'koa'
 
 class MainController {
   /**

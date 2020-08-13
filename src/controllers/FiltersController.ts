@@ -1,4 +1,4 @@
-import { Context, Next } from 'Koa'
+import { Context, Next } from 'koa'
 import Access from '../schemas/Access'
 import Category from '../schemas/Category'
 import Size from '../schemas/Size'
@@ -15,16 +15,16 @@ class FiltersController {
     await Promise.allSettled([
       Access.find()
         .select('title slug')
-        .then(r => (accesses = r)),
+        .then((r) => (accesses = r)),
       Category.find()
         .select('title slug')
-        .then(r => (categories = r)),
+        .then((r) => (categories = r)),
       Size.find()
         .select('title slug')
-        .then(r => (sizes = r)),
+        .then((r) => (sizes = r)),
       Skill.find()
         .select('title slug')
-        .then(r => (skills = r))
+        .then((r) => (skills = r)),
     ])
 
     ctx.body = { content: { accesses, categories, sizes, skills } }

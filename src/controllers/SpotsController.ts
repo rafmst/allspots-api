@@ -1,4 +1,4 @@
-import { Context, Next } from 'Koa'
+import { Context, Next } from 'koa'
 import Spot from '../schemas/Spot'
 
 class SpotsController {
@@ -31,7 +31,7 @@ class SpotsController {
         category: '5f0f540dee1b9b1a8c1fd396',
         access: '5f0f540dee1b9b1a8c1fd3a2',
         size: '5f0f540dee1b9b1a8c1fd39f',
-        skill: '5f0f540dee1b9b1a8c1fd39b'
+        skill: '5f0f540dee1b9b1a8c1fd39b',
       },
       {
         name: 'Slettebakken Kirke',
@@ -45,7 +45,7 @@ class SpotsController {
         category: '5f0f540dee1b9b1a8c1fd396',
         access: '5f0f540dee1b9b1a8c1fd3a2',
         size: '5f0f540dee1b9b1a8c1fd39e',
-        skill: '5f0f540dee1b9b1a8c1fd39b'
+        skill: '5f0f540dee1b9b1a8c1fd39b',
       },
       {
         name: 'Pyramid',
@@ -59,7 +59,7 @@ class SpotsController {
         category: '5f0f540dee1b9b1a8c1fd397',
         access: '5f0f540dee1b9b1a8c1fd3a2',
         size: '5f0f540dee1b9b1a8c1fd39e',
-        skill: '5f0f540dee1b9b1a8c1fd39a'
+        skill: '5f0f540dee1b9b1a8c1fd39a',
       },
       {
         name: 'Fysak Melkplassen',
@@ -73,8 +73,8 @@ class SpotsController {
         category: '5f21e16afb79cba17497c8fe',
         access: '5f0f540dee1b9b1a8c1fd3a2',
         size: '5f0f540dee1b9b1a8c1fd39f',
-        skill: '5f0f540dee1b9b1a8c1fd39a'
-      }
+        skill: '5f0f540dee1b9b1a8c1fd39a',
+      },
     ])
 
     ctx.body = { content: spots }

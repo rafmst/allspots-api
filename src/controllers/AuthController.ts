@@ -1,4 +1,4 @@
-import { Context, Next } from 'Koa'
+import { Context, Next } from 'koa'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import User from '../schemas/User'
@@ -49,9 +49,9 @@ class AuthController {
     ctx.body = {
       error: {
         status: true,
-        message: 'user_not_found'
+        message: 'user_not_found',
       },
-      content: null
+      content: null,
     }
 
     await next()
