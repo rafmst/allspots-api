@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "nodemon src/server.ts",
     "prod": "tsc && node .",
-    "deploy": "git push heroku master",
-    "tsc": "tsc",
-    "postinstall": "npm run tsc"
+    "deploy": "git push heroku master"
   },
   "keywords": [
     "rest",
