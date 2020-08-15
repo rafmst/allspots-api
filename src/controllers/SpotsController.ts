@@ -1,6 +1,14 @@
 import { Context, Next } from 'koa'
 import Spot from '../schemas/Spot'
 
+interface FiltersObject {
+  name?: Object
+  access?: Object
+  category?: Object
+  skill?: Object
+  size?: Object
+}
+
 class SpotsController {
   /**
    * List of all spots
@@ -8,7 +16,36 @@ class SpotsController {
    * @param next Next
    */
   public async list(ctx: Context, next: Next): Promise<void> {
-    const spots = await Spot.find()
+    const { query } = ctx.request
+
+    let filtersObject: FiltersObject = {}
+
+    // Name filter
+    if (typeof query.name !== 'undefined') {
+      filtersObject.name = { $regex: `.*${query.name}.*` }
+    }
+
+    // Access filter
+    if (typeof query.access !== 'undefined') {
+      filtersObject.access = { $eq: query.access }
+    }
+
+    // Categories filter
+    if (typeof query.categories !== 'undefined') {
+      filtersObject.category = { $in: query.categories.split(',') }
+    }
+
+    // Sizes filter
+    if (typeof query.sizes !== 'undefined') {
+      filtersObject.size = { $in: query.sizes.split(',') }
+    }
+
+    // Skills filter
+    if (typeof query.skills !== 'undefined') {
+      filtersObject.skill = { $in: query.skills.split(',') }
+    }
+
+    const spots = await Spot.find(filtersObject)
 
     ctx.body = { content: spots }
     await next()
