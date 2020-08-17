@@ -1,14 +1,17 @@
 import { Context, Next } from 'koa'
 import Spot from '../schemas/Spot'
 
+// Interfaces
 interface FiltersObject {
-  name?: Object
+  city?: Object
+  country?: Object
   access?: Object
   category?: Object
   skill?: Object
   size?: Object
 }
 
+// Class
 class SpotsController {
   /**
    * List of all spots
@@ -20,9 +23,11 @@ class SpotsController {
 
     let filtersObject: FiltersObject = {}
 
-    // Name filter
-    if (typeof query.name !== 'undefined') {
-      filtersObject.name = { $regex: `.*${query.name}.*` }
+    // Location filter
+    if (typeof query.location !== 'undefined') {
+      const location = query.location.split(',')
+      filtersObject.city = { $eq: location[0] }
+      filtersObject.country = { $eq: location[1] }
     }
 
     // Access filter
