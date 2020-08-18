@@ -49,7 +49,7 @@ class AuthController {
     ctx.body = {
       error: {
         status: true,
-        message: 'user_not_found',
+        message: 'userNotFound',
       },
       content: null,
     }
