@@ -53,7 +53,6 @@ class SpotsController {
     const spots = await Spot.find(filtersObject)
       .select('name slug country city image')
       .populate('access', 'title')
-      .populate('category', 'title')
       .populate('skill', 'title')
       .populate('size', 'title')
 
