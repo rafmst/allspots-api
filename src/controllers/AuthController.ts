@@ -10,6 +10,37 @@ class AuthController {
    * @param res
    */
   public async register(ctx: Context, next: Next): Promise<void> {
+    const pass = ctx.request.body.password
+    const conPass = ctx.request.body.conPassword
+
+    // Checks password size
+    if (pass.length < 8) {
+      ctx.body = {
+        error: {
+          status: true,
+          message: 'passwordTooSmall',
+        },
+        content: null,
+      }
+
+      await next()
+      return
+    }
+
+    // Checks password is equal to confirmation password
+    if (pass !== conPass) {
+      ctx.body = {
+        error: {
+          status: true,
+          message: 'passwordsAreDifferent',
+        },
+        content: null,
+      }
+
+      await next()
+      return
+    }
+
     const saltRounds: number = parseInt(process.env.SALT_ROUNDS!)
     const hash = await bcrypt.hash(ctx.request.body.password, saltRounds)
 
@@ -22,6 +53,7 @@ class AuthController {
     ctx.body = { content: { user } }
 
     await next()
+    return
   }
 
   /**
