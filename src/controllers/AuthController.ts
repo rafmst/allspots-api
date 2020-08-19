@@ -41,16 +41,29 @@ class AuthController {
       return
     }
 
-    const saltRounds: number = parseInt(process.env.SALT_ROUNDS!)
-    const hash = await bcrypt.hash(ctx.request.body.password, saltRounds)
+    if (ctx.request.body.email.length && ctx.request.body.name.length) {
+      const saltRounds: number = parseInt(process.env.SALT_ROUNDS!)
+      const hash = await bcrypt.hash(ctx.request.body.password, saltRounds)
 
-    ctx.request.body.password = hash
-    ctx.request.body.role = '5eab33527e5613eb54f69df3'
+      ctx.request.body.password = hash
+      ctx.request.body.role = '5eab33527e5613eb54f69df3'
 
-    await User.create(ctx.request.body)
-    const user = await User.findOne({ email: ctx.request.body.email }).select('name email role')
+      await User.create(ctx.request.body)
+      const user = await User.findOne({ email: ctx.request.body.email }).select('name email role')
 
-    ctx.body = { content: { user } }
+      ctx.body = { content: { user } }
+
+      await next()
+      return
+    }
+
+    ctx.body = {
+      error: {
+        status: true,
+        message: 'emptyFields',
+      },
+      content: null,
+    }
 
     await next()
     return
