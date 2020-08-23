@@ -35,7 +35,8 @@
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.1",
     "koa-router": "^9.1.0",
-    "mongoose": "^5.9.28"
+    "mongoose": "^5.9.28",
+    "slugify": "^1.4.5"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
