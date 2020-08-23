@@ -102,7 +102,7 @@ class SpotsController {
     }
 
     const { body } = ctx.request
-    const spot = await Spot.create({
+    const createdSpot = await Spot.create({
       name: body.name,
       slug: slugify(body.name.toLowerCase()),
       description: body.description,
@@ -116,6 +116,12 @@ class SpotsController {
       size: body.size,
       skill: body.skill,
     })
+
+    const spot = await Spot.findOne({ _id: createdSpot._id })
+      .select('name slug country city image')
+      .populate('access', 'title')
+      .populate('skill', 'title')
+      .populate('size', 'title')
 
     ctx.body = { content: { spot } }
 
