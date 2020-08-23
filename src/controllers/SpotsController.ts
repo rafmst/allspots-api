@@ -117,7 +117,7 @@ class SpotsController {
       skill: body.skill,
     })
 
-    ctx.body = { content: spot }
+    ctx.body = { content: { spot } }
 
     await next()
   }
