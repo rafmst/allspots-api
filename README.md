@@ -6,7 +6,4 @@
 AllSpots aims to be the personal project I always wanted to do and never did. A catalog of parkour spots around the world, with images, description and map locations.
 </p>
 
-<p align="center">
-<a href="http://allspots.rafael.no" target="_blank">Site</a> • 
-<a href="https://rafmst.gitbook.io/allspots/" target="_blank">Documentation</a>
-</p>
+![Light Theme](https://user-images.githubusercontent.com/924985/91487388-f247cf00-e8ad-11ea-9933-ba03bac8a74d.png)
