@@ -127,6 +127,24 @@ class SpotsController {
 
     await next()
   }
+
+  /**
+   * Detail single spot
+   * @param ctx Context
+   * @param next Next
+   */
+  public async single(ctx: Context, next: Next): Promise<void> {
+    const { slug } = ctx.params
+
+    const spots = await Spot.findOne({ slug })
+      .populate('category', 'title')
+      .populate('access', 'title')
+      .populate('skill', 'title')
+      .populate('size', 'title')
+
+    ctx.body = { content: spots }
+    await next()
+  }
 }
 
 export default new SpotsController()
