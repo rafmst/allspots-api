@@ -7,3 +7,17 @@ AllSpots aims to be the personal project I've always wanted to do and never ende
 </p>
 
 ![Light Theme](https://user-images.githubusercontent.com/924985/91487388-f247cf00-e8ad-11ea-9933-ba03bac8a74d.png)
+
+## Table of contents
+
+- [Technologies]()
+- [API Documentation]()
+- [License]()
+
+## Technologies
+
+| Technology  | Version |
+|---|---|
+| Typescript |   |
+| Koa |   |
+| Mongo |   |
