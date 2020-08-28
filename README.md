@@ -8,13 +8,18 @@ AllSpots aims to be the personal project I've always wanted to do and never ende
 
 ![Light Theme](https://user-images.githubusercontent.com/924985/91487388-f247cf00-e8ad-11ea-9933-ba03bac8a74d.png)
 
-## Table of contents
+# Table of contents
 
 - [Technologies](https://github.com/rafmst/allspots-api#technologies)
 - [Documentation](https://github.com/rafmst/allspots-api#documentation)
+  - [Authentication](https://github.com/rafmst/allspots-api#authentication)
+    - [Register user](https://github.com/rafmst/allspots-api#register-user)
+    - [Authenticate](https://github.com/rafmst/allspots-api#authenticate)
+  - [Filters](https://github.com/rafmst/allspots-api#filters)
+    - [Get all filters](https://github.com/rafmst/allspots-api#get-all-filters)
 - [License](https://github.com/rafmst/allspots-api#license)
 
-## Technologies
+# Technologies
 
 | Technology  | Version |
 |---|---|
@@ -22,13 +27,13 @@ AllSpots aims to be the personal project I've always wanted to do and never ende
 | Koa | 2.13.0 |
 | Mongo | 4.4.0 |
 
-## Documentation
+# Documentation
 
-### Authentication
+## Authentication
 
 Authenticate and register new users on the application.
 
-#### Register user
+### Register user
 
 ```bash
 POST https://allspots-api.herokuapp.com/users/register
@@ -63,7 +68,7 @@ Returns the newly registered user without the password field and the role id for
 }
 ```
 
-#### Authenticate
+### Authenticate
 
 ```bash
 POST https://allspots-api.herokuapp.com/users/authentica
@@ -98,11 +103,11 @@ Returns the public user content and a unique token.
 }
 ```
 
-### Filters
+## Filters
 
 Everything related to listing, adding, deleting and editing filters.
 
-#### Get all filters
+### Get all filters
 
 ```bash
 GET https://allspots-api.herokuapp.com/filters
@@ -155,7 +160,7 @@ Filters successfully retrieved.
 }
 ```
 
-## License
+# License
 
 MIT License
 
