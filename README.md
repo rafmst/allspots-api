@@ -47,6 +47,7 @@ This method allows guest users to register in the application and gain access to
 **Response**
 
 *200: 0K*
+
 Returns the newly registered user without the password field and the role id for normal users.
 
 ```js
@@ -80,6 +81,7 @@ Authenticate a user with email and password.
 **Response**
 
 *200: 0K*
+
 Returns the public user content and a unique token.
 
 ```js
@@ -111,6 +113,7 @@ This endpoint allows you to get the list of filters by type of filter. This is u
 **Response**
 
 *200: 0K*
+
 Filters successfully retrieved.
 
 ```js
