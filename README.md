@@ -18,9 +18,139 @@ AllSpots aims to be the personal project I've always wanted to do and never ende
 
 | Technology  | Version |
 |---|---|
-| Typescript |   |
-| Koa |   |
-| Mongo |   |
+| Typescript | 3.9.7 |
+| Koa | 2.13.0 |
+| Mongo | 4.4.0 |
+
+## Documentation
+
+### Authentication
+
+Authenticate and register new users on the application.
+
+#### Register user
+
+```bash
+POST https://allspots-api.herokuapp.com/users/register
+```
+
+This method allows guest users to register in the application and gain access to the list of spots and all the information/features in the app.
+
+**Body Parameters**
+
+| Field | Type | Description |
+|---|---|---|
+| name | string | Name of the user |
+| email | string | Email to confirm identity |
+| password | string | Strong password |
+
+**Response**
+
+*200: 0K*
+Returns the newly registered user without the password field and the role id for normal users.
+
+```js
+{
+  "content": {
+    "user": {
+      "_id": "g0j34908ffj3489fskjdf",
+      "name": "FirstName LastName",
+      "email": "example@email.com",
+      "role": "9483fjf023jdf9823"
+    }
+  }
+}
+```
+
+#### Authenticate
+
+```bash
+POST https://allspots-api.herokuapp.com/users/authentica
+```
+
+Authenticate a user with email and password.
+
+**Body Parameters**
+
+| Field | Type | Description |
+|---|---|---|
+| email | string | Email to confirm identity |
+| password | string | Strong password |
+
+**Response**
+
+*200: 0K*
+Returns the public user content and a unique token.
+
+```js
+{
+  "content": {
+    "user": {
+      "_id": "g0j34908ffj3489fskjdf",
+      "name": "FirstName LastName",
+      "email": "example@email.com",
+      "role": "9483fjf023jdf9823"
+    },
+    "token": "eyJhbGciOiJIUzI1NiI23424VCJ9.eyJ1c2VyIjp7I234WZyB0HMOeJjn190"
+  }
+}
+```
+
+### Filters
+
+Everything related to listing, adding, deleting and editing filters.
+
+#### Get all filters
+
+```bash
+GET https://allspots-api.herokuapp.com/filters
+```
+
+This endpoint allows you to get the list of filters by type of filter. This is useful to show a list of filters available to the user.
+
+**Response**
+
+*200: 0K*
+Filters successfully retrieved.
+
+```js
+{
+  "content": {
+    "accesses": [
+      {
+        "_id": "5f0f540dee1b9b1a8c1fd3a2",
+        "title": "Public",
+        "slug": "public"
+      },
+      { ... }
+    ],
+    "categories": [
+      {
+        "_id": "5f0f540dee1b9b1a8c1fd397",
+        "title": "Playgrounds",
+        "slug": "playgrounds"
+      },
+      { ... }
+    ],
+    "sizes": [
+      {
+        "_id": "5f0f540dee1b9b1a8c1fd39e",
+        "title": "Small",
+        "slug": "small"
+      },
+      { ... }
+    ],
+    "skills": [
+      {
+        "_id": "5f0f540dee1b9b1a8c1fd39c",
+        "title": "Advanced",
+        "slug": "advanced"
+      },
+      { ... }
+    ]
+  }
+}
+```
 
 ## License
 
