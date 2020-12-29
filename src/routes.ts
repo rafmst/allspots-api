@@ -18,6 +18,7 @@ router.post('/users/register', AuthController.register)
 router.post('/users/authenticate', AuthController.authenticate)
 
 router.get('/filters', FiltersController.list)
+router.get('/filters/cities', FiltersController.cities)
 router.get('/spots', SpotsController.list)
 router.post('/spots/add', ensureToken, verifyToken, SpotsController.add)
 router.get('/spots/:slug', SpotsController.single)

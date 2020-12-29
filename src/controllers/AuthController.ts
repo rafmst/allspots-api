@@ -10,8 +10,21 @@ class AuthController {
    * @param res
    */
   public async register(ctx: Context, next: Next): Promise<void> {
-    const pass = ctx.request.body.password
-    const conPass = ctx.request.body.conPassword
+    const { password: pass, conPassword: conPass, email, name } = ctx.request.body
+
+    // Checks if content exists
+    if (typeof pass === 'undefined' || typeof conPass === 'undefined' || typeof email === 'undefined' || typeof name === 'undefined') {
+      ctx.body = {
+        error: {
+          status: true,
+          message: 'emptyFields',
+        },
+        content: null,
+      }
+
+      await next()
+      return
+    }
 
     // Checks password size
     if (pass.length < 8) {
@@ -41,29 +54,16 @@ class AuthController {
       return
     }
 
-    if (ctx.request.body.email.length && ctx.request.body.name.length) {
-      const saltRounds: number = parseInt(process.env.SALT_ROUNDS!)
-      const hash = await bcrypt.hash(ctx.request.body.password, saltRounds)
+    const saltRounds: number = parseInt(process.env.SALT_ROUNDS!)
+    const hash = await bcrypt.hash(pass, saltRounds)
 
-      ctx.request.body.password = hash
-      ctx.request.body.role = '5eab33527e5613eb54f69df3'
+    ctx.request.body.password = hash
+    ctx.request.body.role = '5eab33527e5613eb54f69df3'
 
-      await User.create(ctx.request.body)
-      const user = await User.findOne({ email: ctx.request.body.email }).select('name email role')
+    await User.create(ctx.request.body)
+    const user = await User.findOne({ email }).select('name email role')
 
-      ctx.body = { content: { user } }
-
-      await next()
-      return
-    }
-
-    ctx.body = {
-      error: {
-        status: true,
-        message: 'emptyFields',
-      },
-      content: null,
-    }
+    ctx.body = { content: { user } }
 
     await next()
     return
