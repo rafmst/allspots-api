@@ -26,6 +26,21 @@ class AuthController {
       return
     }
 
+    // Check if user already exists
+    const userExists = await User.findOne({ email }).select('name email role')
+    if(userExists !== null){
+      ctx.body = {
+        error: {
+          status: true,
+          message: 'userAlreadyExists',
+        },
+        content: null,
+      }
+
+      await next()
+      return
+    }
+
     // Checks password size
     if (pass.length < 8) {
       ctx.body = {
