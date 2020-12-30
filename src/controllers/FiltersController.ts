@@ -47,16 +47,21 @@ class FiltersController {
     let countries = {}
     spots.map((spot) => {
       if(typeof countries[spot.country] === 'undefined'){
-        countries[spot.country] = { cities: [] }
-        countries[spot.country].cities.push(spot.city)
+        countries[spot.country] = []
+        countries[spot.country].push(spot.city)
       }else{
-        if(countries[spot.country].cities.indexOf(spot.city) < 0){
-          countries[spot.country].cities.push(spot.city)
+        if(countries[spot.country].indexOf(spot.city) < 0){
+          countries[spot.country].push(spot.city)
         }
       }
     })
+    
+    let orderedCountries = {} 
+    Object.keys(countries).sort().map((countryName) => {
+      orderedCountries[countryName] = countries[countryName].sort()
+    })
 
-    ctx.body = { content: { countries } }
+    ctx.body = { content: { countries: orderedCountries } }
 
     await next()
   }
